@@ -10,6 +10,7 @@ public class SaveOriginalPosition : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     private Collider parentCollider; // Reference to the parent GameObject's collider for collision detection
 
+
     void Start()
     {
         // Store the original position and rotation when the script starts
@@ -18,6 +19,7 @@ public class SaveOriginalPosition : MonoBehaviour
         storedPosition = originalPosition;
         storedRotation = originalRotation;
 
+    
         // Get the XRGrabInteractable component attached to this object
         grabInteractable = GetComponent<XRGrabInteractable>();
 
@@ -29,6 +31,8 @@ public class SaveOriginalPosition : MonoBehaviour
         {
             grabInteractable.onFirstHoverEntered.AddListener(OnFirstHoverEntered);
         }
+
+       
     }
 
     private void OnFirstHoverEntered(XRBaseInteractor interactor)
@@ -58,4 +62,7 @@ public class SaveOriginalPosition : MonoBehaviour
             storedRotation = originalRotation;
         }
     }
+
+
+    
 }

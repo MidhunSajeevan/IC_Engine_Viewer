@@ -4,7 +4,7 @@ using UnityEngine;
 public class AnimationBhehavior : MonoBehaviour
 {
     [SerializeField]Animator animator;
-   
+
     public void OnDisassembleButtonClick()
     {
      
@@ -17,5 +17,8 @@ public class AnimationBhehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         animator.enabled = false;
+       
     }
+  
+  
 }
