@@ -1,17 +1,24 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-
+using TMPro;
 public class DrawLineToParent : MonoBehaviour
 {
-  
+
+    [SerializeField] private string NameOfObject;
     private LineRenderer lineRenderer; // Line Renderer component
 
      Transform childObject;
     Transform parentObject;
     XRGrabInteractable interactable;
+    TextMeshProUGUI textMeshProUGUI;
+    Canvas canvas;
     void Start()
     {
         childObject = transform;
+        canvas = GameObject.Find("NameDisplayCanvas").GetComponent<Canvas>();
+        textMeshProUGUI = canvas.GetComponentInChildren<TextMeshProUGUI>();
+
+
         interactable = GetComponent<XRGrabInteractable>();
         lineRenderer = FindAnyObjectByType<LineRenderer>();
         if (lineRenderer == null)
@@ -33,6 +40,9 @@ public class DrawLineToParent : MonoBehaviour
         lineRenderer.positionCount = 2;
       
 
+        //Disable the canvas First
+         canvas.gameObject.SetActive(false);
+      
         // Update the line positions initially
         UpdateLinePositions();
     }
@@ -41,9 +51,15 @@ public class DrawLineToParent : MonoBehaviour
 
     public void UpdateLinePositions( )
     {
+        canvas.gameObject.SetActive(true);
         // Set the line positions based on the parent and child object positions
         lineRenderer.SetPosition(0, parentObject.position);
         lineRenderer.SetPosition(1, childObject.position);
+
+        //Set Name when the update postion called
+        canvas.transform.position = childObject.position;
+        textMeshProUGUI.text = NameOfObject;
+
     }
     public void FixedUpdate()
     {
