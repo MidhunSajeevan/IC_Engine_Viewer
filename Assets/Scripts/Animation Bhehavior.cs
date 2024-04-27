@@ -20,5 +20,9 @@ public class AnimationBhehavior : MonoBehaviour
        
     }
   
+    public void Quit()
+    {
+        Application.Quit();
+    }
   
 }
