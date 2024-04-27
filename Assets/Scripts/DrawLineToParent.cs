@@ -50,13 +50,10 @@ public class DrawLineToParent : MonoBehaviour
         
         if(interactable.isSelected)
         {
-            Debug.Log("Line Selected");
+
             UpdateLinePositions();
         }
-        else
-        {
-            RemoveLinePositions();
-        }
+       
        
     }
      void RemoveLinePositions()
